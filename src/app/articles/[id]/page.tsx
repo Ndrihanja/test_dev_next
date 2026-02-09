@@ -16,7 +16,7 @@ export async function generateStaticParams() {
   return articles.map(article => ({ id: article.id }))
 }
 
-
+export const revalidate = 60
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const article = await getArticleById(props.params.id)
