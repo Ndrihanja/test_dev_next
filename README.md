@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Next.js Blog Test - Tikasa
 
-## Getting Started
+Ce projet est un test technique réalisé avec **Next.js 15+ (App Router)**, **TypeScript**, et **Prisma**. Il implémente une gestion d'articles de blog avec une optimisation poussée pour le SEO et la performance.
 
-First, run the development server:
+## 🛠️ Stack Technique
 
+- **Framework** : Next.js (App Router)
+- **Langage** : TypeScript (Typage strict)
+- **Base de données** : PostgreSQL avec Prisma ORM
+- **UI/UX** : Tailwind CSS 4 + Shadcn UI
+- **Optimisation** : ISR (Incremental Static Regeneration), `next/image`, `next/link`
+
+## 📋 Prérequis
+
+- Node.js (Version 18 ou supérieure)
+- Une base de données PostgreSQL (locale ou hébergée type Supabase/Neon)
+
+## ⚙️ Installation et Configuration
+
+1. **Cloner le repository :**
+
+   ```bash
+   git clone <ton-lien-repo>
+   cd test_dev_next
+
+   ```
+
+2. **Installer les dépendances :**
+
+   ```bash
+   npm install
+
+   ```
+
+3. **Configurer les variables d'environnement : Créez un fichier .env à la racine et ajoutez votre URL de base de données :**
+   DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+
+4. **Préparer la base de données (Prisma) :**
+
+   ```bash
+   # Générer le client Prisma
+   npx prisma generate
+
+   # Créer les tables dans votre base de données
+   npx prisma db push
+
+   ```
+
+5. **Seeding des données**
+
+   ```bash
+   # Compiler le seed (nécessaire selon la config package.json)
+   tsc prisma/seed.ts --outDir prisma/dist
+
+   # Exécuter le seed
+   npx prisma db seed
+   ```
+
+**Lancement**
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🏗️ Architecture du Projet
+Le projet suit une Clean Architecture pour garantir la séparation des responsabilités :
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+/app : Routes, layouts et Server Components.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+/components : Composants UI réutilisables (Shadcn).
 
-## Learn More
+/lib/services : Couche d'accès aux données (Data Access Layer).
 
-To learn more about Next.js, take a look at the following resources:
+/lib/actions : Mutations via Server Actions.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+/lib/utils : Utilitaires (formatage de date, etc.).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+/prisma : Schéma de données et scripts de peuplement.
 
-## Deploy on Vercel
+🧪 Fonctionnalités implémentées
+[x] ISR (Incremental Static Regeneration) : Liste des articles mise à jour dynamiquement.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[x] Dynamic Routing : Pages articles générées statiquement avec generateStaticParams.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[x] Images optimisées : Configuration remotePatterns pour les domaines externes.
+
+[x] Clean Code : Typage TypeScript 100% strict (aucun any).
+
+[x] UX intuitive : Design responsive avec cartes interactives.
