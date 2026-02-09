@@ -39,7 +39,7 @@ async function main() {
       }
     ],
   })
-  console.log("Nouveau Seed généré avec succès !")
+  console.log("✅ Nouveau Seed généré avec succès !")
 }
 
 main()
