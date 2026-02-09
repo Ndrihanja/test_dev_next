@@ -20,7 +20,7 @@ Ce projet est un test technique réalisé avec **Next.js 15+ (App Router)**, **T
 1. **Cloner le repository :**
 
    ```bash
-   git clone <ton-lien-repo>
+   git clone <lien-repo>
    cd test_dev_next
 
    ```
@@ -57,6 +57,7 @@ Ce projet est un test technique réalisé avec **Next.js 15+ (App Router)**, **T
    ```
 
 **Lancement**
+
 ```bash
 npm run dev
 
@@ -69,7 +70,6 @@ Le projet suit une Clean Architecture pour garantir la séparation des responsab
 
 /lib/services : Couche d'accès aux données (Data Access Layer).
 
-/lib/actions : Mutations via Server Actions.
 
 /lib/utils : Utilitaires (formatage de date, etc.).
 
@@ -85,3 +85,4 @@ Le projet suit une Clean Architecture pour garantir la séparation des responsab
 [x] Clean Code : Typage TypeScript 100% strict (aucun any).
 
 [x] UX intuitive : Design responsive avec cartes interactives.
+```
