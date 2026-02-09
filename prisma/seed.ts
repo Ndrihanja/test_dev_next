@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient()
 
 async function main() {
-  await prisma.article.deleteMany({}) // Nettoyage pour éviter les doublons
+  await prisma.article.deleteMany({})
 
   await prisma.article.createMany({
     data: [
@@ -39,7 +39,7 @@ async function main() {
       }
     ],
   })
-  console.log("✅ Nouveau Seed généré avec succès !")
+  console.log("Nouveau Seed généré avec succès !")
 }
 
 main()
