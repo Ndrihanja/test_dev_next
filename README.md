@@ -50,7 +50,7 @@ Ce projet est un test technique réalisé avec **Next.js 15+ (App Router)**, **T
 
    ```bash
    # Compiler le seed (nécessaire selon la config package.json)
-   tsc prisma/seed.ts --outDir prisma/dist
+   npx tsc prisma/seed.ts --outDir prisma/dist --module commonjs
 
    # Exécuter le seed
    npx prisma db seed
