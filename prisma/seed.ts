@@ -1,51 +1,52 @@
-// prisma/seed.ts
 import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
 async function main() {
+  await prisma.article.deleteMany({}) // Nettoyage pour éviter les doublons
+
   await prisma.article.createMany({
     data: [
       {
-        title: "Découvrir Next.js",
-        description: "Introduction à Next.js et à ses fonctionnalités principales",
-        content: "Next.js est un framework React permettant de créer des applications web performantes avec SSR et SSG.",
-        image: "https://images.unsplash.com/photo-1612831455541-96f0d136f9f5?auto=format&fit=crop&w=800&q=80",
+        title: "Le Guide du Café Parfait",
+        description: "Apprenez les secrets d'un expresso réussi à la maison.",
+        content: "Le café est bien plus qu'une boisson, c'est une science. De la mouture du grain à la température de l'eau...",
+        image: "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        title: "L'Art de la Photographie",
-        description: "Conseils pour améliorer vos photos",
-        content: "La photographie est un art qui demande pratique et patience. Découvrez nos conseils pour capturer des images incroyables.",
-        image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=800&q=80",
+        title: "Randonnée en Haute Montagne",
+        description: "Les 5 sommets à gravir cette année en Europe.",
+        content: "Rien ne vaut l'air pur de la montagne. Voici notre sélection des sentiers les plus spectaculaires...",
+        image: "https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        title: "Cuisine: Recettes du Monde",
-        description: "Explorez des saveurs venues d'ailleurs",
-        content: "Découvrez des recettes faciles et délicieuses provenant de différentes cultures.",
-        image: "https://images.unsplash.com/photo-1512058564366-c9e9b0c9d8f3?auto=format&fit=crop&w=800&q=80",
+        title: "Le Bureau Minimaliste",
+        description: "Optimisez votre espace de travail pour plus de productivité.",
+        content: "Un bureau encombré est un esprit encombré. Découvrez comment épurer votre setup de télétravail...",
+        image: "https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        title: "Voyage en Islande",
-        description: "Itinéraire et conseils pour un voyage inoubliable",
-        content: "L'Islande est une destination incroyable pour les amoureux de la nature et des paysages spectaculaires.",
-        image: "https://images.unsplash.com/photo-1526779259212-9b6d6c78b3b1?auto=format&fit=crop&w=800&q=80",
+        title: "Street Food à Tokyo",
+        description: "Un voyage culinaire au cœur de Shibuya.",
+        content: "Des ramens fumants aux sushis les plus frais, Tokyo est le paradis des gourmets...",
+        image: "https://images.pexels.com/photos/2507007/pexels-photo-2507007.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        title: "Les Bienfaits du Yoga",
-        description: "Améliorez votre corps et votre esprit",
-        content: "Le yoga aide à réduire le stress, améliorer la flexibilité et renforcer le corps tout en apaisant l'esprit.",
-        image: "https://images.unsplash.com/photo-1554284126-ef3b22a5f2f0?auto=format&fit=crop&w=800&q=80",
-      },
-      {
-        title: "Technologies Émergentes",
-        description: "Comprendre l'IA et la blockchain",
-        content: "L'intelligence artificielle et la blockchain révolutionnent le monde des technologies modernes.",
-        image: "https://images.unsplash.com/photo-1581091215368-4d8c2f518a68?auto=format&fit=crop&w=800&q=80",
-      },
+        title: "Introduction à la Domotique",
+        description: "Rendre sa maison intelligente en 2026.",
+        content: "L'Internet des objets (IoT) simplifie notre quotidien. Voici par où commencer...",
+        image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      }
     ],
   })
+  console.log("Nouveau Seed généré avec succès !")
 }
 
 main()
-  .catch(console.error)
-  .finally(() => prisma.$disconnect())
+  .catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
